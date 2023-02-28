@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/var/www/app
+    depends_on:
+      - db
+    ports:
+      - "9000:80"
+    networks:
+      - laravel-network
+  
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: app
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+      MYSQL_ROOT_PASSWORD: laravel
+    ports:
+      - "4406:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - laravel-network
+  
+networks:
+  laravel-network:
+
+volumes:
+  dbdata:
