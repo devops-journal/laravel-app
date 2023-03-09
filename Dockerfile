@@ -34,7 +34,7 @@ COPY /nginx/app.conf /etc/nginx/conf.d/
 
 COPY .env /var/www/app/
 
-RUN chown -R www-data:www-data /var/www/app/storage/logs && chmod -R 775 /var/www/app/storage
+RUN chown -R www-data:www-data /var/www/app/storage/ && chmod -R 775 /var/www/app/storage && chown -R www-data:www-data bootstrap/cache && chmod -R 775 bootstrap/cache
 
 # Expose ports
 EXPOSE 80
