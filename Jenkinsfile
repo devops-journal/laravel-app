@@ -26,6 +26,7 @@ pipeline {
                 steps {
                         sh 'docker compose down'
                         sh 'docker build -t app .'
+                        sh 'docker compose down'
                 }
                 }
                 stage('Deploy') {
