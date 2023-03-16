@@ -24,7 +24,7 @@ pipeline {
                 }
                 stage('Build') {
                 steps {
-                        sh 'docker stop app-app-1'
+                        sh 'docker compose down'
                         sh 'docker build -t app .'
                 }
                 }
